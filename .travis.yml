@@ -90,11 +90,11 @@ before_install:
 install:
     - wget $STAGING/$ZIP_FILE
     - unzip $ZIP_FILE
+
+script:
     - cd apache-beam-$VERSION
     - python setup.py bdist
     - ls -lh dist
-
-
 
 #script:
 #    - install_run $PLAT
