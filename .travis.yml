@@ -1,5 +1,4 @@
 language: python
-python: 3.5
 #sudo: required
 dist: trusty
 #services: docker
@@ -14,14 +13,10 @@ env:
       - PLAT=x86_64
 
 matrix:
-  exclude:
-    # Exclude the default Python 3.5 build
-    - python: 3.5
   include:
    - os: osx
      language: generic
-     env:
-       - MB_PYTHON_VERSION=2.7
+     python: "2.7"
 #    - os: osx
 #      language: generic
 #      env:
@@ -46,8 +41,7 @@ matrix:
 #        - MB_PYTHON_VERSION=2.6
 #        - PLAT=i686
    - os: linux
-     env:
-       - MB_PYTHON_VERSION=2.7
+     python: "2.7"
 #    - os: linux
 #      env:
 #        - MB_PYTHON_VERSION=2.7
