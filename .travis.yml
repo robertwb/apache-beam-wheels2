@@ -1,0 +1,114 @@
+language: python
+python: 3.5
+#sudo: required
+dist: trusty
+#services: docker
+osx_image: xcode6.4
+
+env:
+  global:
+      - VERSION=2.4.0
+      - ZIP_FILE=apache-beam-${VERSION}-python.zip
+      - STAGING=https://dist.apache.org/repos/dist/dev/beam/${VERSION}/
+      # Remember to edit appveyor.yml too
+      - PLAT=x86_64
+
+matrix:
+  exclude:
+    # Exclude the default Python 3.5 build
+    - python: 3.5
+  include:
+   - os: osx
+     language: generic
+     env:
+       - MB_PYTHON_VERSION=2.7
+#    - os: osx
+#      language: generic
+#      env:
+#        - MB_PYTHON_VERSION=3.3
+#    - os: osx
+#      language: generic
+#      env:
+#        - MB_PYTHON_VERSION=3.4
+#    - os: osx
+#      language: generic
+#      env:
+#        - MB_PYTHON_VERSION=3.5
+#    - os: osx
+#      language: generic
+#      env:
+#        - MB_PYTHON_VERSION=3.6
+#    - os: linux
+#      env:
+#        - MB_PYTHON_VERSION=2.6
+#    - os: linux
+#      env:
+#        - MB_PYTHON_VERSION=2.6
+#        - PLAT=i686
+   - os: linux
+     env:
+       - MB_PYTHON_VERSION=2.7
+#    - os: linux
+#      env:
+#        - MB_PYTHON_VERSION=2.7
+#        - UNICODE_WIDTH=16
+#    - os: linux
+#      env:
+#        - MB_PYTHON_VERSION=2.7
+#        - PLAT=i686
+#    - os: linux
+#      env:
+#        - MB_PYTHON_VERSION=2.7
+#        - PLAT=i686
+#        - UNICODE_WIDTH=16
+#    - os: linux
+#      env:
+#        - MB_PYTHON_VERSION=3.3
+#    - os: linux
+#      env:
+#        - MB_PYTHON_VERSION=3.3
+#        - PLAT=i686
+#    - os: linux
+#      env:
+#        - MB_PYTHON_VERSION=3.4
+#    - os: linux
+#      env:
+#        - MB_PYTHON_VERSION=3.4
+#        - PLAT=i686
+#    - os: linux
+#      env:
+#        - MB_PYTHON_VERSION=3.5
+#    - os: linux
+#      env:
+#        - MB_PYTHON_VERSION=3.5
+#        - PLAT=i686
+#    - os: linux
+#      env:
+#        - MB_PYTHON_VERSION=3.6
+#    - os: linux
+#      env:
+#        - MB_PYTHON_VERSION=3.6
+#        - PLAT=i686
+
+before_install:
+    - pip install Cython
+
+install:
+    - wget $STAGING/$ZIP_FILE
+    - unzip $ZIP_FILE
+    - cd apache-beam-$VERSION
+    - python setup.py bdist
+    - ls -lh dist
+
+
+
+#script:
+#    - install_run $PLAT
+
+after_success:
+#    Upload wheels to Rackspace container
+#    - pip install wheelhouse-uploader
+#    - python -m wheelhouse_uploader upload --local-folder
+#          ${TRAVIS_BUILD_DIR}/wheelhouse/
+#          $UPLOAD_ARGS
+#          $CONTAINER
