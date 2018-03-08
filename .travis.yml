@@ -85,7 +85,11 @@ matrix:
 #        - PLAT=i686
 
 before_install:
-    - pip install Cython
+    - if [[ $(uname) == Darwin ]]; then
+        PIP=pip2;
+      else
+        PIP=pip
+    - $PIP install Cython
 
 install:
     - wget $STAGING/$ZIP_FILE
