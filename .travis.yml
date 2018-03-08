@@ -89,6 +89,7 @@ before_install:
         PIP=pip2;
       else
         PIP=pip;
+      fi
     - $PIP install Cython
 
 install:
