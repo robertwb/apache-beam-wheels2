@@ -98,8 +98,8 @@ matrix:
 
 install:
     - wget $STAGING/$ZIP_FILE
-    - mkdir src
-    - unzip $ZIP_FILE -d src
+    - unzip $ZIP_FILE
+    - mv apache-beam-${VERSION} src
 
 script:
   - |
