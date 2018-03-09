@@ -3,7 +3,6 @@ bash miniconda.sh -b -p $HOME/miniconda && rm miniconda.sh;
 export PATH="$HOME/miniconda/bin:$PATH"; hash -r;
 pip install Cython
 
-unzip $ZIP_FILE
-cd apache-beam-$VERSION
+cd src
 python setup.py bdist_wheel
 ls -lh dist

@@ -98,7 +98,8 @@ matrix:
 
 install:
     - wget $STAGING/$ZIP_FILE
-#    - unzip $ZIP_FILE
+    - mkdir src
+    - unzip $ZIP_FILE -d src
 
 script:
   - |
