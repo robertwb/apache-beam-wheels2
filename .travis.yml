@@ -87,7 +87,7 @@ matrix:
 before_install:
     - |
       if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then # Install Miniconda
-        curl -s -o miniconda.sh https://repo.continuum.io/miniconda/Miniconda$PY-latest-MacOSX-x86_64.sh;
+        curl -s -o miniconda.sh https://repo.continuum.io/miniconda/Miniconda2-latest-MacOSX-x86_64.sh;
         bash miniconda.sh -b -p $HOME/miniconda && rm miniconda.sh;
         export PATH="$HOME/miniconda/bin:$PATH"; hash -r;
         #conda install --quiet --yes nomkl --file=test-requirements.txt --file=test-requirements-cpython.txt;
@@ -97,6 +97,7 @@ before_install:
 #      else
 #        PIP=pip;
 #      fi
+    - python -c 'import sys; print("Python %s" % (sys.version,))'
     - pip install Cython
 
 install:
