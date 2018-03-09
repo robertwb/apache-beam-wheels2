@@ -97,7 +97,7 @@ before_install:
 #      else
 #        PIP=pip;
 #      fi
-    - $PIP install Cython
+    - pip install Cython
 
 install:
     - wget $STAGING/$ZIP_FILE
