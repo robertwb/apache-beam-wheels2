@@ -6,7 +6,7 @@ set -e -x
 PYTHONS="/opt/python/cp27*/bin"
 
 # Compile wheels
-for PYBIN in PYTHONS; do
+for PYBIN in $PYTHONS; do
 #    "${PYBIN}/pip" install -r /io/dev-requirements.txt
     "${PYBIN}/pip" wheel /io/ -w wheelhouse/
 done
@@ -17,7 +17,7 @@ for whl in wheelhouse/*.whl; do
 done
 
 # Install packages and test
-for PYBIN in PYTHONS; do
+for PYBIN in $PYTHONS; do
     "${PYBIN}/pip" install python-manylinux-demo --no-index -f /io/wheelhouse
     (cd "$HOME"; "${PYBIN}/nosetests" pymanylinuxdemo)
 done
