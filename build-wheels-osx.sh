@@ -5,4 +5,4 @@ pip install Cython
 
 cd src
 python setup.py bdist_wheel
-ls -lh dist
+mv dist/*.whl wheelhouse
